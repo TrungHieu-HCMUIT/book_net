@@ -139,7 +139,7 @@ const GuildDto guildTestModel = GuildDto(
     imageUrl:
         'https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.6435-9/87220350_3114466355253620_8717576024990154752_n.jpg?stp=dst-jpg_s2048x2048&_nc_cat=102&ccb=1-7&_nc_sid=e3f864&_nc_ohc=jxQsnB6ejhgAX-Ce8gl&_nc_ht=scontent.fsgn2-5.fna&oh=00_AT-eTbC5-7_rUX24aTaaFo1xZAp5wnn4FcVgdTCP_9pyWA&oe=62BFF3EA',
     name: 'Đảo mèo',
-    descrition: 'Đảo mèo descrition',
+    description: 'Đảo mèo descrition',
     memberList: ['memberList']);
 
 // GuildNewsDto
@@ -206,7 +206,7 @@ final List<GuildDto> listGuild = [
     imageUrl:
         'https://i.pinimg.com/564x/d5/b2/31/d5b2314b8ef86b8a7949c3b209e0aaba.jpg',
     name: 'This is Guild 001',
-    descrition: "This is desscription, this is desscription.",
+    description: "This is desscription, this is desscription.",
     memberList: [],
   ),
   const GuildDto(
@@ -214,7 +214,7 @@ final List<GuildDto> listGuild = [
     imageUrl:
         'https://i.pinimg.com/564x/94/3b/3e/943b3e7ff25ee56fa87a1bf8e62aaafe.jpg',
     name: 'This is Guild 001',
-    descrition: "This is desscription, this is desscription.",
+    description: "This is desscription, this is desscription.",
     memberList: [],
   ),
   const GuildDto(
@@ -222,7 +222,7 @@ final List<GuildDto> listGuild = [
     imageUrl:
         'https://i.pinimg.com/564x/74/3c/13/743c13f3dd1bd7531c41526c14e4582b.jpg',
     name: 'This is Guild 001',
-    descrition: "This is desscription, this is desscription.",
+    description: "This is desscription, this is desscription.",
     memberList: [],
   ),
   const GuildDto(
@@ -230,7 +230,7 @@ final List<GuildDto> listGuild = [
     imageUrl:
         'https://i.pinimg.com/564x/fb/2d/de/fb2ddecaf549827a2cbb8565d1102c60.jpg',
     name: 'This is Guild 001',
-    descrition: "This is desscription, this is desscription.",
+    description: "This is desscription, this is desscription.",
     memberList: [],
   ),
   const GuildDto(
@@ -238,7 +238,7 @@ final List<GuildDto> listGuild = [
     imageUrl:
         'https://i.pinimg.com/564x/ee/8e/90/ee8e90420e2c5120ba63e81f419da1cb.jpg',
     name: 'This is Guild 001',
-    descrition: "This is desscription, this is desscription.",
+    description: "This is desscription, this is desscription.",
     memberList: [],
   ),
   const GuildDto(
@@ -246,7 +246,7 @@ final List<GuildDto> listGuild = [
     imageUrl:
         'https://i.pinimg.com/564x/74/3c/13/743c13f3dd1bd7531c41526c14e4582b.jpg',
     name: 'This is Guild 001',
-    descrition: "This is desscription, this is desscription.",
+    description: "This is desscription, this is desscription.",
     memberList: [],
   ),
   const GuildDto(
@@ -254,7 +254,7 @@ final List<GuildDto> listGuild = [
     imageUrl:
         'https://i.pinimg.com/564x/fb/2d/de/fb2ddecaf549827a2cbb8565d1102c60.jpg',
     name: 'This is Guild 001',
-    descrition: "This is desscription, this is desscription.",
+    description: "This is desscription, this is desscription.",
     memberList: [],
   ),
   const GuildDto(
@@ -262,7 +262,7 @@ final List<GuildDto> listGuild = [
     imageUrl:
         'https://i.pinimg.com/564x/ee/8e/90/ee8e90420e2c5120ba63e81f419da1cb.jpg',
     name: 'This is Guild 001',
-    descrition: "This is desscription, this is desscription.",
+    description: "This is desscription, this is desscription.",
     memberList: [],
   ),
   const GuildDto(
@@ -270,7 +270,7 @@ final List<GuildDto> listGuild = [
     imageUrl:
         'https://i.pinimg.com/564x/74/3c/13/743c13f3dd1bd7531c41526c14e4582b.jpg',
     name: 'This is Guild 001',
-    descrition: "This is desscription, this is desscription.",
+    description: "This is desscription, this is desscription.",
     memberList: [],
   ),
   const GuildDto(
@@ -278,7 +278,7 @@ final List<GuildDto> listGuild = [
     imageUrl:
         'https://i.pinimg.com/564x/fb/2d/de/fb2ddecaf549827a2cbb8565d1102c60.jpg',
     name: 'This is Guild 001',
-    descrition: "This is desscription, this is desscription.",
+    description: "This is desscription, this is desscription.",
     memberList: [],
   ),
   const GuildDto(
@@ -286,7 +286,7 @@ final List<GuildDto> listGuild = [
     imageUrl:
         'https://i.pinimg.com/564x/ee/8e/90/ee8e90420e2c5120ba63e81f419da1cb.jpg',
     name: 'This is Guild 001',
-    descrition: "This is desscription, this is desscription.",
+    description: "This is desscription, this is desscription.",
     memberList: [],
   ),
   const GuildDto(
@@ -294,7 +294,7 @@ final List<GuildDto> listGuild = [
     imageUrl:
         'https://i.pinimg.com/564x/74/3c/13/743c13f3dd1bd7531c41526c14e4582b.jpg',
     name: 'This is Guild 001',
-    descrition: "This is desscription, this is desscription.",
+    description: "This is desscription, this is desscription.",
     memberList: [],
   ),
   const GuildDto(
@@ -302,7 +302,7 @@ final List<GuildDto> listGuild = [
     imageUrl:
         'https://i.pinimg.com/564x/fb/2d/de/fb2ddecaf549827a2cbb8565d1102c60.jpg',
     name: 'This is Guild 001',
-    descrition: "This is desscription, this is desscription.",
+    description: "This is desscription, this is desscription.",
     memberList: [],
   ),
   const GuildDto(
@@ -310,7 +310,7 @@ final List<GuildDto> listGuild = [
     imageUrl:
         'https://i.pinimg.com/564x/ee/8e/90/ee8e90420e2c5120ba63e81f419da1cb.jpg',
     name: 'This is Guild 001',
-    descrition: "This is desscription, this is desscription.",
+    description: "This is desscription, this is desscription.",
     memberList: [],
   ),
 ];

@@ -107,7 +107,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         CustomTextField(
                           text: 'Name',
                           controller: nameController,
-                          validator: ValidateConfigs.usernameValidator,
+                          validator: null,
                         ),
                         SizedBox(
                           height: 24.h,

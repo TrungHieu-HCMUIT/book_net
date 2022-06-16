@@ -23,7 +23,7 @@ mixin _$GuildDto {
   String get id => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get descrition => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   List<String> get memberList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $GuildDtoCopyWith<$Res> {
       {String id,
       String imageUrl,
       String name,
-      String descrition,
+      String description,
       List<String> memberList});
 }
 
@@ -57,7 +57,7 @@ class _$GuildDtoCopyWithImpl<$Res> implements $GuildDtoCopyWith<$Res> {
     Object? id = freezed,
     Object? imageUrl = freezed,
     Object? name = freezed,
-    Object? descrition = freezed,
+    Object? description = freezed,
     Object? memberList = freezed,
   }) {
     return _then(_value.copyWith(
@@ -73,9 +73,9 @@ class _$GuildDtoCopyWithImpl<$Res> implements $GuildDtoCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      descrition: descrition == freezed
-          ? _value.descrition
-          : descrition // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
       memberList: memberList == freezed
           ? _value.memberList
@@ -95,7 +95,7 @@ abstract class _$$_GuildDtoCopyWith<$Res> implements $GuildDtoCopyWith<$Res> {
       {String id,
       String imageUrl,
       String name,
-      String descrition,
+      String description,
       List<String> memberList});
 }
 
@@ -114,7 +114,7 @@ class __$$_GuildDtoCopyWithImpl<$Res> extends _$GuildDtoCopyWithImpl<$Res>
     Object? id = freezed,
     Object? imageUrl = freezed,
     Object? name = freezed,
-    Object? descrition = freezed,
+    Object? description = freezed,
     Object? memberList = freezed,
   }) {
     return _then(_$_GuildDto(
@@ -130,9 +130,9 @@ class __$$_GuildDtoCopyWithImpl<$Res> extends _$GuildDtoCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      descrition: descrition == freezed
-          ? _value.descrition
-          : descrition // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String,
       memberList: memberList == freezed
           ? _value._memberList
@@ -149,7 +149,7 @@ class _$_GuildDto implements _GuildDto {
       {required this.id,
       required this.imageUrl,
       required this.name,
-      required this.descrition,
+      required this.description,
       required final List<String> memberList})
       : _memberList = memberList;
 
@@ -163,7 +163,7 @@ class _$_GuildDto implements _GuildDto {
   @override
   final String name;
   @override
-  final String descrition;
+  final String description;
   final List<String> _memberList;
   @override
   List<String> get memberList {
@@ -173,7 +173,7 @@ class _$_GuildDto implements _GuildDto {
 
   @override
   String toString() {
-    return 'GuildDto(id: $id, imageUrl: $imageUrl, name: $name, descrition: $descrition, memberList: $memberList)';
+    return 'GuildDto(id: $id, imageUrl: $imageUrl, name: $name, description: $description, memberList: $memberList)';
   }
 
   @override
@@ -185,7 +185,7 @@ class _$_GuildDto implements _GuildDto {
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
-                .equals(other.descrition, descrition) &&
+                .equals(other.description, description) &&
             const DeepCollectionEquality()
                 .equals(other._memberList, _memberList));
   }
@@ -197,7 +197,7 @@ class _$_GuildDto implements _GuildDto {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(imageUrl),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(descrition),
+      const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(_memberList));
 
   @JsonKey(ignore: true)
@@ -216,7 +216,7 @@ abstract class _GuildDto implements GuildDto {
       {required final String id,
       required final String imageUrl,
       required final String name,
-      required final String descrition,
+      required final String description,
       required final List<String> memberList}) = _$_GuildDto;
 
   factory _GuildDto.fromJson(Map<String, dynamic> json) = _$_GuildDto.fromJson;
@@ -228,7 +228,7 @@ abstract class _GuildDto implements GuildDto {
   @override
   String get name => throw _privateConstructorUsedError;
   @override
-  String get descrition => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   @override
   List<String> get memberList => throw _privateConstructorUsedError;
   @override

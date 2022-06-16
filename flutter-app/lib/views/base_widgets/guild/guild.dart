@@ -20,7 +20,7 @@ class Guild extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 220.h,
+        height: 232.h,
         padding: EdgeInsets.only(right: 8.h),
         decoration: const BoxDecoration(color: AppColors.whiteColor),
         child: SizedBox(
@@ -37,13 +37,23 @@ class Guild extends StatelessWidget {
                   width: 140,
                   radius: AppStyles.radiusXss,
                 ),
-                Text(guild.name, style: TextConfigs.bold16),
                 SizedBox(
                   height: 4.h,
                 ),
-                Text(guild.descrition,
-                    style: TextConfigs.regular12
-                        .copyWith(color: AppColors.darkGrayColor)),
+                Text(
+                  guild.name,
+                  style: TextConfigs.bold16,
+                  maxLines: 1,
+                ),
+                SizedBox(
+                  height: 4.h,
+                ),
+                Text(
+                  guild.description,
+                  style: TextConfigs.regular12
+                      .copyWith(color: AppColors.darkGrayColor),
+                  overflow: TextOverflow.ellipsis,
+                ),
                 SizedBox(
                   height: 8.h,
                 ),

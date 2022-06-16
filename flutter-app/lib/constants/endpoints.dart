@@ -14,4 +14,6 @@ class AppEndpoints {
   static const reactEndPoint = _feedEndPoint + "/react";
   static const createCommentEndPoint = _feedEndPoint + "/comment";
   static const createReplyCommentEndPoint = _feedEndPoint + "/reply_comment";
+
+  static const guildEndPoint = "$_baseUrl/guilds";
 }

@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
 
   List<Widget> _buildScreen() {
     return [
-      FeedScreen(),
+      const FeedScreen(),
       const GuildScreen(),
       const BookScreen(),
       const AchievementScreen(),

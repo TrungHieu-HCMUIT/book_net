@@ -10,7 +10,7 @@ _$_GuildDto _$$_GuildDtoFromJson(Map<String, dynamic> json) => _$_GuildDto(
       id: json['id'] as String,
       imageUrl: json['imageUrl'] as String,
       name: json['name'] as String,
-      descrition: json['descrition'] as String,
+      description: json['description'] as String,
       memberList: (json['memberList'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
@@ -21,6 +21,6 @@ Map<String, dynamic> _$$_GuildDtoToJson(_$_GuildDto instance) =>
       'id': instance.id,
       'imageUrl': instance.imageUrl,
       'name': instance.name,
-      'descrition': instance.descrition,
+      'description': instance.description,
       'memberList': instance.memberList,
     };

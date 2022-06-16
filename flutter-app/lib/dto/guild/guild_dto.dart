@@ -9,8 +9,8 @@ class GuildDto with _$GuildDto {
     required String id,
     required String imageUrl,
     required String name,
-    required String descrition,
-    required List<String> memberList, //TODO: Fix
+    required String description,
+    required List<String> memberList,
   }) = _GuildDto;
 
   factory GuildDto.fromJson(Map<String, dynamic> json) =>

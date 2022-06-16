@@ -63,7 +63,7 @@ class DetailGuildScreen extends StatelessWidget {
                       SizedBox(
                         height: AppStyles.defaultMarginVertical,
                       ),
-                      Text(guild.descrition,
+                      Text(guild.description,
                           style: TextConfigs.regular12
                               .copyWith(color: AppColors.darkGrayColor)),
                     ],
