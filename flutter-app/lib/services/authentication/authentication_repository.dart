@@ -26,10 +26,15 @@ class AuthenticationRepository {
     return response;
   }
 
-  Future<void> signUp(String email, String username, String password) async {
+  Future<void> signUp(
+      String email, String username, String name, String password) async {
     Dio _dio = Dio();
-    await _dio.post(AppEndpoints.signUpEndPoint,
-        data: {"email": email, "username": username, "password": password});
+    await _dio.post(AppEndpoints.signUpEndPoint, data: {
+      "email": email,
+      "username": username,
+      "name": name,
+      "password": password
+    });
     return;
   }
 
