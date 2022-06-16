@@ -108,10 +108,11 @@ public class AuthService {
                     .map(GuildSimplifiedModel::getSimplified).collect(Collectors.toList());
             response.setGuilds(simplifiedGuild);
 
-            var simplifiedFriend = profileModel.getListFriend().stream()
-                    .map(ProfileSimplifiedModel::getSimplified).collect(Collectors.toList());
-            response.setFriend(simplifiedFriend);
+            var followers = profileModel.getFollowersSimplified();
+            var following = profileModel.getFollowingSimplified();
 
+            response.setFollowers(followers);
+            response.setFollowing(following);
             response.setCurrentPoint(profileModel.getCurrentPoint());
             response.setHighestPoint(profileModel.getHighestPoint());
             response.setCreationDate(profileModel.getCreationDate());
@@ -122,6 +123,7 @@ public class AuthService {
     public long createNewUser(SignupRequest signUpRequest) {
         var username = signUpRequest.getUsername();
         var email = signUpRequest.getEmail();
+        var name = signUpRequest.getName();
 
         if (this._isUsernameTaken(username)) {
             logger.error("User cannot be created {}: taken username", username);
@@ -135,9 +137,10 @@ public class AuthService {
 
         // Create new user's account
         VerifyingUser verifyingUser = new VerifyingUser(
-                signUpRequest.getUsername()
-                , signUpRequest.getEmail()
+                username
+                , email
                 , encoder.encode(signUpRequest.getPassword())
+                , name
         );
 
         Set<String> strRoles = signUpRequest.getRoles();

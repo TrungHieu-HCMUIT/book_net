@@ -56,7 +56,7 @@ class _LoginTypeScreenState extends State<LoginTypeScreen> {
                 ),
                 RaisedGradientButton(
                   child: Text(
-                    'Login with email',
+                    'Login with username',
                     style: TextConfigs.medium16
                         .copyWith(color: AppColors.whiteColor),
                   ),

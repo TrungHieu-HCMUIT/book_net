@@ -17,6 +17,7 @@ import 'package:book_net/views/home_screen/detail_book_screen/detail_book_screen
 import 'package:book_net/views/home_screen/detail_guild_screen/detail_guild_screen.dart';
 import 'package:book_net/views/home_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:book_net/views/home_screen/edit_profile_screen/widget/edit_screen.dart';
+import 'package:book_net/views/home_screen/follow_screen/follow_screen.dart';
 import 'package:book_net/views/home_screen/home_screen.dart';
 import 'package:book_net/views/home_screen/news_detail_screen/news_detail_screen.dart';
 import 'package:book_net/views/home_screen/personal_achievements_screen/personal_achievements_screen.dart';
@@ -161,7 +162,16 @@ class AppRoutes {
       case SearchScreen.id:
         return CupertinoPageRoute(
             settings: settings, builder: (_) => const SearchScreen());
-
+      case FollowScreen.id:
+        List<dynamic>? args = settings.arguments as List?;
+        return CupertinoPageRoute(
+            settings: settings,
+            builder: (_) => BlocProvider(
+                create: (context) => CreateNewsBloc(),
+                child: FollowScreen(
+                  user: args?[0],
+                  type: args?[1],
+                )));
       default:
         return _errorRoute();
     }

@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Column(
                         children: [
                           CustomTextField(
-                            text: 'E-mail address',
+                            text: 'Username',
                             controller: userController,
                             // validator: ValidateConfigs.emailValidator,
                             validator: null,

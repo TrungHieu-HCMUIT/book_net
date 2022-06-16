@@ -1,7 +1,11 @@
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
+import 'package:book_net/dto/book/book_dto.dart';
+import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/dto/user/user_dto.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
+import 'package:book_net/views/base_widgets/book/book.dart';
+import 'package:book_net/views/base_widgets/empty_book/empty_book.dart';
 import 'package:flutter/material.dart';
 
 class BookShelfScreen extends StatelessWidget {
@@ -46,35 +50,39 @@ class BookShelfScreen extends StatelessWidget {
                 // first tab bar view widget
                 Container(
                   color: AppColors.whiteColor,
-                  child: const Center(
-                    child: Text(
-                      'To read',
-                    ),
-                  ),
+                  child: Center(child: _buildBookShelf(listBook)),
                 ),
 
                 // second tab bar viiew widget
                 Container(
                   color: AppColors.whiteColor,
-                  child: const Center(
-                    child: Text(
-                      'Reading',
-                    ),
-                  ),
+                  child: Center(child: _buildBookShelf(listBook)),
                 ),
                 Container(
                   color: AppColors.whiteColor,
-                  child: const Center(
-                    child: Text(
-                      'Read',
-                    ),
-                  ),
+                  child: Center(child: _buildBookShelf(listBook)),
                 ),
               ],
             ),
           ),
         ]),
       ),
+    );
+  }
+
+  Widget _buildBookShelf(List<BookDto> listBook) {
+    if (listBook.isEmpty) return const EmptyBook();
+    return Expanded(
+      // height: 340.h,
+      child: ListView.builder(
+          scrollDirection: Axis.vertical,
+          itemCount: listBook.length,
+          itemBuilder: (context, i) {
+            return Book(
+              isHorizontal: true,
+              book: listBook[i],
+            );
+          }),
     );
   }
 }

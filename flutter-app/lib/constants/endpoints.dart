@@ -9,11 +9,11 @@ class AppEndpoints {
   static const signUpEndPoint = _authEndPoint + "/signup";
   static const verifyEmailEndPoint = signUpEndPoint + "/submit_verification";
 
-  static const _feedEndPoint = "$_baseUrl/feed";
-  static const createPostNewsEndPoint = _feedEndPoint + "/post_news";
-  static const reactEndPoint = _feedEndPoint + "/react";
-  static const createCommentEndPoint = _feedEndPoint + "/comment";
-  static const createReplyCommentEndPoint = _feedEndPoint + "/reply_comment";
+  static const feedEndPoint = "$_baseUrl/feed";
+  static const createPostNewsEndPoint = feedEndPoint + "/post_news";
+  static const reactEndPoint = feedEndPoint + "/react";
+  static const createCommentEndPoint = feedEndPoint + "/comment";
+  static const createReplyCommentEndPoint = feedEndPoint + "/reply_comment";
 
   static const guildEndPoint = "$_baseUrl/guilds";
 }

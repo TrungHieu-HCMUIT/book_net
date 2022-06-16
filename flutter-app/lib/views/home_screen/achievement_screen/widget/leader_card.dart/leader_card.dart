@@ -61,7 +61,7 @@ class LeaderCard extends StatelessWidget {
 
   Widget userWithPointCard(Color textColor) {
     return SizedBox(
-      width: isFill ? 220.w : 274.w,
+      width: isFill ? 220.w : 270.w,
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         UserCard(
           user: user,

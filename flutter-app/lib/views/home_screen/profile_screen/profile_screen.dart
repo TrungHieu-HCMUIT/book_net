@@ -1,4 +1,5 @@
 import 'package:book_net/configs/color_configs.dart';
+import 'package:book_net/configs/profile_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
@@ -16,6 +17,7 @@ import 'package:book_net/views/change_password_screen/change_password_screen.dar
 import 'package:book_net/views/home_screen/bookshelf_screen/bookshelf_screen.dart';
 import 'package:book_net/views/home_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:book_net/views/home_screen/feed_screen/news.dart';
+import 'package:book_net/views/home_screen/follow_screen/follow_screen.dart';
 import 'package:book_net/views/home_screen/profile_screen/widgets/stf_btn_follow/stf_btn_follow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,7 +28,6 @@ class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key, required UserDto user})
       : _user = user,
         super(key: key);
-
   final UserDto _user;
   void launchEmailSubmission() async {
     final Uri params = Uri(
@@ -56,6 +57,12 @@ class ProfileScreen extends StatelessWidget {
 
     onPressedViewBookshelf() {
       Navigator.of(context).pushNamed(BookShelfScreen.id, arguments: _user);
+    }
+
+    onTapFollow(BuildContext context) {
+      print('object');
+      Navigator.of(context).popAndPushNamed(FollowScreen.id,
+          arguments: [_user, Profile.following]);
     }
 
     void onPressMenuButton() {
@@ -122,57 +129,95 @@ class ProfileScreen extends StatelessWidget {
     ];
 
     Widget _buildHeader() {
-      return Container(
-        color: AppColors.whiteColor,
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: AppStyles.defaultMarginHorizontal),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        DefaultCircleAvatar(
-                            width: 100.w,
-                            height: 100.h,
-                            imageUrl: _user.imageUrl),
-                        SizedBox(
-                          width: AppStyles.smallMarginHorizontal,
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(24.w, 16.h, 24.w, 0.h),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      DefaultCircleAvatar(
+                          width: 64.w, height: 64.h, imageUrl: _user.imageUrl),
+                      SizedBox(
+                        width: 20.w,
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width -
+                            64.w -
+                            48.w -
+                            20.w,
+                        child: Row(
+                          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            const Flexible(
+                              child: NumberWithText(
+                                number: 33,
+                                text: 'like',
+                              ),
+                              flex: 1,
+                            ),
+                            Flexible(
+                              child: NumberWithText(
+                                number: 33,
+                                text: 'following',
+                                type: Profile.following,
+                                user: _user,
+                              ),
+                              flex: 1,
+                            ),
+                            Flexible(
+                              child: NumberWithText(
+                                number: 33,
+                                text: 'follower',
+                                type: Profile.follower,
+                                user: _user,
+                              ),
+                              flex: 1,
+                            ),
+                          ],
                         ),
-                        _buildNumberInfo(context)
-                      ]),
-                  SizedBox(
-                    height: 8.h,
-                  ),
-                  Text(
-                    _user.alias,
-                    style: TextConfigs.bold16,
-                  ),
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.h),
-                child:
-                    Text(_user.email, style: TextConfigs.regular12OceanGreen),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Bo cua su that',
-                    style: TextConfigs.regular12Gray,
-                  ),
-                ],
-              ),
-              ListChip(list: interested),
-            ],
+                      ),
+                    ]),
+                SizedBox(
+                  height: 8.h,
+                ),
+                Text(
+                  _user.alias,
+                  style: TextConfigs.bold16,
+                ),
+              ],
+            ),
           ),
-        ),
+          Padding(
+            padding: EdgeInsets.only(left: 16.w),
+            child: TextButton(
+              child: Text(_user.alias + '@gmail.com',
+                  style: TextConfigs.regular12OceanGreen),
+              onPressed: launchEmailSubmission,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(24.h, 4.h, 24.h, 8.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Bo cua su that',
+                  style: TextConfigs.regular12Gray,
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(16.h, 4.h, 16.h, 16.h),
+            child: ListChip(list: interested),
+          ),
+        ],
       );
     }
 
@@ -191,35 +236,32 @@ class ProfileScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildHeader(),
-              Container(
-                color: AppColors.whiteColor,
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(16.w, 0.h, 16.w, 16.h),
-                  child: Column(
-                    children: [
-                      RaisedGradientButton(
-                        child: Text(
-                          'View ' + _user.alias + "'s bookshelf",
-                          style: TextConfigs.medium16
-                              .copyWith(color: AppColors.oceanGreenColor),
-                        ),
-                        gradient: const LinearGradient(
-                          colors: AppColors.gradientSecondary,
-                        ),
-                        onPressed: onPressedViewBookshelf,
+              Padding(
+                padding: EdgeInsets.fromLTRB(24.w, 0.h, 24.w, 16.h),
+                child: Column(
+                  children: [
+                    RaisedGradientButton(
+                      child: Text(
+                        'View ' + _user.alias + "'s bookshelf",
+                        style: TextConfigs.medium16
+                            .copyWith(color: AppColors.oceanGreenColor),
                       ),
-                      SizedBox(
-                        height: 8.h,
+                      gradient: const LinearGradient(
+                        colors: AppColors.gradientSecondary,
                       ),
-                      const Divider(),
-                      SizedBox(
-                        height: 8.h,
-                      ),
-                      _user != CurrUserData().user
-                          ? StatefulButtonFollow(user: _user)
-                          : const SizedBox.shrink(),
-                    ],
-                  ),
+                      onPressed: onPressedViewBookshelf,
+                    ),
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    const Divider(),
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    _user != CurrUserData().user
+                        ? StatefulButtonFollow(user: _user)
+                        : const SizedBox.shrink(),
+                  ],
                 ),
               ),
               ListView.builder(
@@ -231,42 +273,6 @@ class ProfileScreen extends StatelessWidget {
               ),
             ]),
       ),
-    );
-  }
-
-  Row _buildNumberInfo(BuildContext context) {
-    return Row(
-      children: [
-        SizedBox(
-          width: MediaQuery.of(context).size.width - 64.w - 48.w - 20.w,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const <Widget>[
-              Flexible(
-                child: NumberWithText(
-                  number: 33,
-                  text: 'like',
-                ),
-                flex: 1,
-              ),
-              Flexible(
-                child: NumberWithText(
-                  number: 33,
-                  text: 'following',
-                ),
-                flex: 1,
-              ),
-              Flexible(
-                child: NumberWithText(
-                  number: 33,
-                  text: 'follower',
-                ),
-                flex: 1,
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }

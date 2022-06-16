@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Collection;
+import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -55,6 +56,15 @@ public class FeedController {
         );
     }
 
+    @PostMapping("/react")
+    public ResponseEntity<?> reactWithNews(@Valid @RequestBody ReactionCreateRequest req) {
+        List<String> userIdLikeList = feedService.reactWithPost(req);
+        if (userIdLikeList != null)
+            return ResponseEntity.ok(new BaseResponse(userIdLikeList));
+        else
+            return ResponseEntity.badRequest().body(new BaseResponse( null));
+    }
+
     @PostMapping("/comment")
     public ResponseEntity<?> createComment(@Valid @RequestBody CommentCreateRequest req) {
         CommentModel model = feedService.createComment(req);
@@ -64,7 +74,7 @@ public class FeedController {
             return ResponseEntity.badRequest().body(new BaseResponse( null));
     }
 
-    @PostMapping("/reply-comment")
+    @PostMapping("/reply_comment")
     public ResponseEntity<?> createReplyComment(@Valid @RequestBody ReplyCommentCreateRequest req) {
         ReplyCommentModel model = feedService.createReplyComment(req);
         if (model != null)
@@ -72,62 +82,13 @@ public class FeedController {
         else
             return ResponseEntity.badRequest().body(new BaseResponse( null));
     }
-
-    @PostMapping("/react")
-    public ResponseEntity<?> reactWithNews(@Valid @RequestBody ReactionCreateRequest req) {
-        // TODO: Change total like of post to list of userId
-        return null;
-    }
     // endregion
-
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getById(@PathVariable("id") String id) {
-        BaseNewsModel sample = feedService.getSample(id);
-        return ResponseEntity.ok(
-                new BaseResponse(sample)
-        );
-    }
 
     @PostMapping
     public ResponseEntity<?> createSample(@Valid @RequestBody PostNewsCreateRequest req) {
         PostNewsModel newModel = feedService.createPostNews(req);
         return ResponseEntity.ok(
                 new BaseResponse(newModel)
-        );
-    }
-
-//    @PutMapping("/{id}")
-//    public ResponseEntity<?> updateSample(
-//            @PathVariable("id") String id,
-//            @Valid @RequestBody FeedUpdateRequest req
-//    ) {
-//        BaseNews editedModel = feedService.updateSample(id, req);
-//        return ResponseEntity.ok(
-//                new BaseResponse(editedModel)
-//        );
-//    }
-
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<?> removeSample(@PathVariable("id") String id) {
-//        BaseNews deleteSample = feedService.removeSample(id);
-//        return ResponseEntity.ok(
-//                new BaseResponse(deleteSample)
-//        );
-//    }
-
-    @PostMapping("/notify")
-    public ResponseEntity<?> doNotify() {
-        feedService.doNotify();
-        return ResponseEntity.ok(
-                new BaseResponse(null)
-        );
-    }
-
-    @PostMapping("/notify-with-args")
-    public ResponseEntity<?> doNotifyWithArgument(@Valid @RequestBody FeedNotifyRequest req) {
-        feedService.doNotifyWithArgument(req);
-        return ResponseEntity.ok(
-                new BaseResponse(null)
         );
     }
 }

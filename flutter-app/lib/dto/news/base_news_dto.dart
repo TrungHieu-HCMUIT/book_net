@@ -36,6 +36,8 @@ class BaseNewsDto {
   int get totalLike => likeUserIdList.length;
   String get userAlias => user.alias;
   String? get userImageUrl => user.imageUrl;
+
+  
 }
 
 enum NewsType {
@@ -74,21 +76,22 @@ final List<BaseNewsDto> newsGuildTest = [
 ];
 
 final UserDto userTestModel = UserDto(
-    id: 'id',
-    imageUrl:
-        'https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.6435-9/176869830_1722285027979676_4686567485411404858_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=_EfwKIv53SsAX-eJq2b&tn=xvG496jA7qoqR9u7&_nc_ht=scontent.fsgn2-6.fna&oh=00_AT-I7mn0_l5G48pBsWGOxGVdrLhNp05lPonO3B6FKBV9dw&oe=62C8DA8A',
-    name: 'Duy Quan',
-    alias: 'duyquann',
-    gender: 2,
-    dob: '01/01/1999',
-    bookShelf: ['bookShelf'],
-    following: [],
-    followers: [],
-    guildList: ['guildList'],
-    currentPoint: 100,
-    highestPoint: 1000,
-    createDate: 1654925791410,
-    email: 'duyquan@gmail.com');
+  id: 'id',
+  imageUrl:
+      'https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.6435-9/176869830_1722285027979676_4686567485411404858_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=_EfwKIv53SsAX-eJq2b&tn=xvG496jA7qoqR9u7&_nc_ht=scontent.fsgn2-6.fna&oh=00_AT-I7mn0_l5G48pBsWGOxGVdrLhNp05lPonO3B6FKBV9dw&oe=62C8DA8A',
+  name: 'Duy Quan',
+  alias: 'duyquann',
+  gender: 2,
+  dob: '01/01/1999',
+  bookShelf: ['bookShelf'],
+  following: [],
+  followers: [],
+  guildList: ['guildList'],
+  currentPoint: 100,
+  highestPoint: 1000,
+  createDate: 1654925791410,
+  email: 'duyquan@gmail.com',
+);
 
 final List<CommentDto> commentListTestModel = [
   commentTestModel,
@@ -365,4 +368,15 @@ List listMusicAuthor = [
   'Jaykii',
   'Demi Lovato',
   'Soobin Hoang Son',
+];
+
+List listUser = [
+  userTestModel,
+  userTestModel,
+  userTestModel,
+  userTestModel,
+  userTestModel,
+  userTestModel,
+  userTestModel,
+  userTestModel,
 ];

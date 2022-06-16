@@ -74,12 +74,32 @@ public class BaseNewsModel {
         this.caption = caption;
     }
 
+    public LinkedList<String> getLikeUserIdList() {
+        return likeUserIdList;
+    }
+
     public int getNumberOfLikes() {
         return likeUserIdList.size();
     }
 
     public LinkedList<CommentModel> getCommentList() {
         return commentList;
+    }
+
+    public boolean containUserInLikeList(String userId) {
+        return likeUserIdList.contains(userId);
+    }
+
+    public void addUserToLikeList(String userId) {
+        likeUserIdList.add(userId);
+    }
+
+    public void removeUserFromLikeList(String userId) {
+        likeUserIdList.remove(userId);
+    }
+
+    public long getCreatedDate() {
+        return createdDate;
     }
 
     public CommentModel addCommentAndGet(String content, ProfileSimplifiedModel profileSimplified) {
@@ -90,7 +110,7 @@ public class BaseNewsModel {
 
     public ReplyCommentModel addReplyCommentAndGet(String commentId, String content, ProfileSimplifiedModel profileSimplified) {
         for (CommentModel comment: commentList) {
-            if (comment.get_id().equals(commentId)) {
+            if (comment.getId().equals(commentId)) {
                 return comment.addReplyCommentAndGet(content, profileSimplified);
             }
         }

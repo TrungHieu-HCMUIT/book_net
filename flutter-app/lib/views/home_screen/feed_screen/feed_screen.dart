@@ -1,12 +1,19 @@
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
+import 'package:book_net/view_models/feed_bloc/feed_bloc.dart';
+import 'package:book_net/view_models/feed_bloc/feed_event.dart';
+import 'package:book_net/view_models/feed_bloc/feed_state.dart';
+import 'package:book_net/view_models/status.dart';
 import 'package:book_net/views/home_screen/create_news_screen/create_news_screen.dart';
 import 'package:book_net/views/home_screen/feed_screen/news.dart';
 import 'package:book_net/views/home_screen/search_screen/search_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../configs/color_configs.dart';
 import '../../../configs/style_configs.dart';
+import '../../../dto/news/news_response_dto.dart';
+import '../../../view_models/user/curr_user.dart';
 import '../../base_widgets/bar/bar.dart';
 import '../../base_widgets/button/icon_button.dart';
 import '../../base_widgets/button/raised_gradient_button.dart';
@@ -28,22 +35,40 @@ class FeedScreen extends StatelessWidget {
         width: AppStyles.defaultMarginHorizontal,
       )
     ];
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(double.infinity, AppStyles.appBarHeight),
-        child: Bars(
-          title: 'Newfeed',
-          list: _barIcons,
-          leading: const SizedBox(),
-        ),
-      ),
-      // TODO: Fix here, it must be infinity list
-      body: ListView(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        children: _buildListItem(context),
-      ),
-    );
+    return BlocProvider<FeedBloc>(
+        create: (context) => FeedBloc()..add(const GetFeedEvent()),
+        child: Scaffold(
+          appBar: PreferredSize(
+            preferredSize: Size(double.infinity, AppStyles.appBarHeight),
+            child: Bars(
+              title: 'Newfeed',
+              list: _barIcons,
+              leading: const SizedBox(),
+            ),
+          ),
+          body: ListView(
+            children: _buildListItem(context),
+          ),
+          // body: BlocBuilder<FeedBloc, FeedState>(
+          //   builder: (context, state) {
+          //     switch (state.status) {
+          //       case Status.inProgress:
+          //         return const Center(
+          //             child: CircularProgressIndicator(
+          //           backgroundColor: AppColors.green1Color,
+          //         ));
+          //       case Status.success:
+          //         return Expanded(
+          //           child: Column(
+          //             children: _buildListItem(context, state.result),
+          //           ),
+          //         );
+          //       default:
+          //         return const SizedBox();
+          //     }
+          //   },
+          // ),
+        ));
   }
 
   Widget _buildHeader(BuildContext context) {
@@ -56,7 +81,7 @@ class FeedScreen extends StatelessWidget {
                 horizontal: AppStyles.defaultMarginHorizontal,
                 vertical: AppStyles.defaultMarginVertical),
             child: Text(
-              "Hi, Trung Hieu! Let's explore something new!",
+              "Hi, ${CurrUserData().user!.name}! Let's explore something new!",
               style: TextConfigs.bold20,
             ),
           ),

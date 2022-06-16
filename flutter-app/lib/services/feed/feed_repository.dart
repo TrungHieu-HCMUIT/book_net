@@ -2,6 +2,7 @@ import 'package:book_net/services/http_header_option.dart';
 import 'package:dio/dio.dart';
 
 import '../../constants/endpoints.dart';
+import '../../view_models/user/curr_user.dart';
 import '../authentication/authentication_repository.dart';
 
 class FeedRepository {
@@ -20,6 +21,14 @@ class FeedRepository {
       AppEndpoints.createPostNewsEndPoint,
       options: HttpHeaderOption().options,
       data: {"userId": userId, "caption": caption, "imagesUrl": imagesUrl},
+    );
+    return response;
+  }
+
+  Future<Response> getFeed(userId) async {
+    Dio _dio = Dio();
+    Response response = await _dio.get(
+      "${AppEndpoints.feedEndPoint}/${CurrUserData().userId}",
     );
     return response;
   }
