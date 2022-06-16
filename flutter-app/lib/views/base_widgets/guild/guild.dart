@@ -37,6 +37,9 @@ class Guild extends StatelessWidget {
                   width: 140,
                   radius: AppStyles.radiusXss,
                 ),
+                SizedBox(
+                  height: 4.h,
+                ),
                 Text(guild.name, style: TextConfigs.bold16),
                 SizedBox(
                   height: 4.h,
