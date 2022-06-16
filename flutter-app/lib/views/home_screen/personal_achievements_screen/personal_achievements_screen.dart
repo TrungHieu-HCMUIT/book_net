@@ -160,7 +160,7 @@ class PersonalAchievementsScreen extends StatelessWidget {
           style: TextConfigs.bold16,
         ),
         Text(
-          CurrUserData().user!.name,
+          CurrUserData().user!.alias,
           style: TextConfigs.regular14,
         ),
         SizedBox(

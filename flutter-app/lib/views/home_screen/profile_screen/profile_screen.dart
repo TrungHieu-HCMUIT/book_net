@@ -26,6 +26,7 @@ class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key, required UserDto user})
       : _user = user,
         super(key: key);
+
   final UserDto _user;
   void launchEmailSubmission() async {
     final Uri params = Uri(
@@ -121,66 +122,57 @@ class ProfileScreen extends StatelessWidget {
     ];
 
     Widget _buildHeader() {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: AppStyles.defaultMarginHorizontal),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(4.h),
-                        child: DefaultCircleAvatar(
-                            width: 60.w,
-                            height: 60.h,
+      return Container(
+        color: AppColors.whiteColor,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: AppStyles.defaultMarginHorizontal),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        DefaultCircleAvatar(
+                            width: 100.w,
+                            height: 100.h,
                             imageUrl: _user.imageUrl),
-                      ),
-                      SizedBox(
-                        width: 20.w,
-                      ),
-                      _buildNumberInfo(context)
-                    ]),
-                SizedBox(
-                  height: 8.h,
-                ),
-                Text(
-                  _user.alias,
-                  style: TextConfigs.bold16,
-                ),
-              ],
-            ),
+                        SizedBox(
+                          width: AppStyles.smallMarginHorizontal,
+                        ),
+                        _buildNumberInfo(context)
+                      ]),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                  Text(
+                    _user.alias,
+                    style: TextConfigs.bold16,
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 8.h),
+                child:
+                    Text(_user.email, style: TextConfigs.regular12OceanGreen),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Bo cua su that',
+                    style: TextConfigs.regular12Gray,
+                  ),
+                ],
+              ),
+              ListChip(list: interested),
+            ],
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 16.w),
-            child: TextButton(
-              child: Text(_user.alias + '@gmail.com',
-                  style: TextConfigs.regular12OceanGreen),
-              onPressed: launchEmailSubmission,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(24.h, 4.h, 24.h, 8.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Bo cua su that',
-                  style: TextConfigs.regular12Gray,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.fromLTRB(16.h, 4.h, 16.h, 16.h),
-            child: ListChip(list: interested),
-          ),
-        ],
+        ),
       );
     }
 
@@ -199,32 +191,35 @@ class ProfileScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildHeader(),
-              Padding(
-                padding: EdgeInsets.fromLTRB(24.w, 0.h, 24.w, 16.h),
-                child: Column(
-                  children: [
-                    RaisedGradientButton(
-                      child: Text(
-                        'View ' + _user.alias + "'s bookshelf",
-                        style: TextConfigs.medium16
-                            .copyWith(color: AppColors.oceanGreenColor),
+              Container(
+                color: AppColors.whiteColor,
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(16.w, 0.h, 16.w, 16.h),
+                  child: Column(
+                    children: [
+                      RaisedGradientButton(
+                        child: Text(
+                          'View ' + _user.alias + "'s bookshelf",
+                          style: TextConfigs.medium16
+                              .copyWith(color: AppColors.oceanGreenColor),
+                        ),
+                        gradient: const LinearGradient(
+                          colors: AppColors.gradientSecondary,
+                        ),
+                        onPressed: onPressedViewBookshelf,
                       ),
-                      gradient: const LinearGradient(
-                        colors: AppColors.gradientSecondary,
+                      SizedBox(
+                        height: 8.h,
                       ),
-                      onPressed: onPressedViewBookshelf,
-                    ),
-                    SizedBox(
-                      height: 8.h,
-                    ),
-                    const Divider(),
-                    SizedBox(
-                      height: 8.h,
-                    ),
-                    _user != CurrUserData().user
-                        ? StatefulButtonFollow(user: _user)
-                        : const SizedBox.shrink(),
-                  ],
+                      const Divider(),
+                      SizedBox(
+                        height: 8.h,
+                      ),
+                      _user != CurrUserData().user
+                          ? StatefulButtonFollow(user: _user)
+                          : const SizedBox.shrink(),
+                    ],
+                  ),
                 ),
               ),
               ListView.builder(

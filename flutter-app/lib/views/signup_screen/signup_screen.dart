@@ -29,6 +29,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
   TextEditingController passController = TextEditingController();
   TextEditingController confirmPassController = TextEditingController();
 
@@ -42,6 +43,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         context.read<SignUpBloc>().add(OnSignUpEvent(
             email: emailController.text,
             username: usernameController.text,
+            name: nameController.text,
             password: passController.text));
       }
     }
@@ -99,14 +101,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           controller: usernameController,
                           validator: ValidateConfigs.usernameValidator,
                         ),
-                        // SizedBox(
-                        //   height: 24.h,
-                        // ),
-                        // CustomTextField(
-                        //   text: 'Last name',
-                        //   controller: lastNameController,
-                        //   validator: ValidateConfigs.lastNameValidator,
-                        // ),
+                        SizedBox(
+                          height: 24.h,
+                        ),
+                        CustomTextField(
+                          text: 'Name',
+                          controller: nameController,
+                          validator: ValidateConfigs.usernameValidator,
+                        ),
                         SizedBox(
                           height: 24.h,
                         ),

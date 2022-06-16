@@ -37,7 +37,7 @@ class UserCard extends StatelessWidget {
                   style: TextConfigs.regular16.copyWith(color: aliasColor),
                 ),
                 Text(
-                  user.name,
+                  user.name ?? "",
                   style: TextConfigs.regular14.copyWith(color: nameColor),
                 ),
               ],
