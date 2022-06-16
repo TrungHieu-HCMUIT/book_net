@@ -21,7 +21,7 @@ Future<void> showMyDialog(BuildContext context, String title, String imageUrl,
                 BorderRadius.all(Radius.circular(AppStyles.radiusXss))),
         title: Text(
           title,
-          style: TextConfigs.bold24,
+          style: TextConfigs.bold24.copyWith(color: AppColors.oceanGreenColor),
           textAlign: TextAlign.center,
         ),
         content: SingleChildScrollView(
@@ -57,10 +57,7 @@ Future<void> showMyDialog(BuildContext context, String title, String imageUrl,
               style: TextConfigs.medium16.copyWith(color: AppColors.whiteColor),
             ),
             gradient: const LinearGradient(
-              colors: <Color>[
-                AppColors.green1Color,
-                AppColors.green2Color,
-              ],
+              colors: AppColors.gradientPrimary,
             ),
             onPressed: () {
               action();

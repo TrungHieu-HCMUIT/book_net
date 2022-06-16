@@ -10,17 +10,21 @@ class CustomTab extends StatelessWidget {
       length: 3,
       initialIndex: 0,
       child: Column(children: [
-        const SizedBox(
+        SizedBox(
           height: 50,
-          child: TabBar(
-            indicatorColor: AppColors.amazonColor,
-            labelColor: AppColors.amazonColor,
-            unselectedLabelColor: AppColors.oceanGreenColor,
-            tabs: [
-              Tab(text: 'To read'),
-              Tab(text: 'Reading'),
-              Tab(text: 'Read'),
-            ],
+          child: AppBar(
+            backgroundColor: AppColors.whiteColor,
+            bottom: const TabBar(
+              indicatorColor: AppColors.amazonColor,
+              labelColor: AppColors.amazonColor,
+              automaticIndicatorColorAdjustment: false,
+              unselectedLabelColor: AppColors.amazonColor,
+              tabs: [
+                Tab(text: 'To read'),
+                Tab(text: 'Reading'),
+                Tab(text: 'Read'),
+              ],
+            ),
           ),
         ),
 

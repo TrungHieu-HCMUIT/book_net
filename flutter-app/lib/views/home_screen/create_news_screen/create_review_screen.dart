@@ -167,10 +167,7 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
         style: TextConfigs.medium16.copyWith(color: AppColors.whiteColor),
       ),
       gradient: const LinearGradient(
-        colors: <Color>[
-          AppColors.green1Color,
-          AppColors.green2Color,
-        ],
+        colors: AppColors.gradientPrimary,
       ),
       onPressed: () => {},
     );

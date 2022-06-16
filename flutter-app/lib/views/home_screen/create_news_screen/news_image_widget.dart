@@ -94,10 +94,7 @@ class _ImageAndPostWidgetState extends State<ImageAndPostWidget> {
                     TextConfigs.medium16.copyWith(color: AppColors.whiteColor),
               ),
               gradient: const LinearGradient(
-                colors: <Color>[
-                  AppColors.green2Color,
-                  AppColors.green1Color,
-                ],
+                colors: AppColors.gradientPrimary,
               ),
               onPressed: () {
                 List<File> imageFiles = [];

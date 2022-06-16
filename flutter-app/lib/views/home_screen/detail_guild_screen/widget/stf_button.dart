@@ -104,10 +104,7 @@ class _StateFulButtonState extends State<StateFulButton> {
                             .copyWith(color: AppColors.whiteColor),
                       ),
                       gradient: const LinearGradient(
-                        colors: <Color>[
-                          AppColors.green1Color,
-                          AppColors.green2Color,
-                        ],
+                        colors: AppColors.gradientPrimary,
                       ),
                       onPressed: () => _navigateToCreateNewsScreen(context),
                     ),
@@ -127,22 +124,23 @@ class _StateFulButtonState extends State<StateFulButton> {
               ),
             ],
           )
-        : RaisedGradientButton(
-            child: Text(
-              'Join',
-              style: TextConfigs.medium16.copyWith(color: AppColors.whiteColor),
-            ),
-            gradient: const LinearGradient(
-              colors: <Color>[
-                AppColors.green1Color,
-                AppColors.green2Color,
-              ],
-            ),
-            onPressed: () {
-              setState(() {
-                isJoined = !isJoined;
-              });
-            });
+        : Padding(
+            padding: EdgeInsets.all(24.h),
+            child: RaisedGradientButton(
+                child: Text(
+                  'Join',
+                  style: TextConfigs.medium16
+                      .copyWith(color: AppColors.whiteColor),
+                ),
+                gradient: const LinearGradient(
+                  colors: AppColors.gradientPrimary,
+                ),
+                onPressed: () {
+                  setState(() {
+                    isJoined = !isJoined;
+                  });
+                }),
+          );
   }
 
   void _navigateToCreateNewsScreen(BuildContext context) {

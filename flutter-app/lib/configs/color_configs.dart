@@ -27,4 +27,17 @@ class AppColors {
   static const amazonColor = Color(0xFF347D5E);
   static const skyLightColor = Color(0xFFE3E5E5);
   static const greenLightestColor = Color(0xFFECFCE5);
+
+  static const gradientPrimary = <Color>[
+    AppColors.green1Color,
+    AppColors.green2Color,
+  ];
+  static const gradientSecondary = <Color>[
+    AppColors.teaGreenColor,
+    AppColors.lightGrayColor,
+  ];
+  static const gradientOutline = <Color>[
+    AppColors.whiteColor,
+    AppColors.whiteColor,
+  ];
 }

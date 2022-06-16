@@ -74,10 +74,7 @@ class _LaunchScreenState extends State<LaunchScreen> {
                         .copyWith(color: AppColors.whiteColor),
                   ),
                   gradient: const LinearGradient(
-                    colors: <Color>[
-                      AppColors.green1Color,
-                      AppColors.green2Color,
-                    ],
+                    colors: AppColors.gradientPrimary,
                   ),
                   onPressed: onPressedChooseLoginType,
                 ),

@@ -6,6 +6,7 @@ import 'package:book_net/dto/user/user_dto.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/home_screen/achievement_screen/widget/empty_leader_board/empty_leader_board.dart';
 import 'package:book_net/views/home_screen/achievement_screen/widget/leader_card.dart/leader_card.dart';
+import 'package:book_net/views/home_screen/personal_achievements_screen/personal_achievements_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,6 +23,9 @@ class AchievementScreen extends StatelessWidget {
       userTestModel,
       userTestModel
     ];
+    onTap(BuildContext context) {
+      Navigator.of(context).pushNamed(PersonalAchievementsScreen.id);
+    }
 
     Widget listLeaderBoard() {
       return ListView.builder(
@@ -72,6 +76,8 @@ class AchievementScreen extends StatelessWidget {
             user: userTestModel,
             color: AppColors.oceanGreenColor,
             isFill: true,
+            onTap: () =>
+                Navigator.of(context).pushNamed(PersonalAchievementsScreen.id),
           )
         ],
       ),

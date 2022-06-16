@@ -134,10 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             .copyWith(color: AppColors.whiteColor),
                       ),
                       gradient: const LinearGradient(
-                        colors: <Color>[
-                          AppColors.green1Color,
-                          AppColors.green2Color,
-                        ],
+                        colors: AppColors.gradientPrimary,
                       ),
                       onPressed: () => _onPressedLogin(
                           context, _key.currentState!.validate()),

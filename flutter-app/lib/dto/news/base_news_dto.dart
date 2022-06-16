@@ -314,3 +314,55 @@ final List<GuildDto> listGuild = [
     memberList: [],
   ),
 ];
+List listTitle = [
+  'I am newbie',
+  'The explore',
+  'This is legend',
+  'The father of truth',
+  'Chicken book',
+  'Apolo in this book',
+  'Smart girl',
+  'Smart boy'
+];
+List listPoint = [
+  100,
+  200,
+  500,
+  1000,
+  900,
+  800,
+  300,
+  300,
+];
+List listSelect = [
+  false,
+  true,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+];
+
+List listMusic = [
+  'Play date',
+  'Dont break my heart',
+  'Lalisa',
+  'Love',
+  'Summer vibe',
+  '10 reasons',
+  'Impossible',
+  'Blackjack'
+];
+
+List listMusicAuthor = [
+  'Nickki',
+  'Andie',
+  'Lisa BLACKPINK',
+  'Elysha',
+  'Tom Cruise',
+  'Jaykii',
+  'Demi Lovato',
+  'Soobin Hoang Son',
+];

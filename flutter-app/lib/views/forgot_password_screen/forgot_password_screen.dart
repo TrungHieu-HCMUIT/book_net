@@ -98,10 +98,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         .copyWith(color: AppColors.whiteColor),
                   ),
                   gradient: const LinearGradient(
-                    colors: <Color>[
-                      AppColors.green2Color,
-                      AppColors.green1Color,
-                    ],
+                    colors: AppColors.gradientPrimary,
                   ),
                   onPressed: onPressedLogin,
                 ),

@@ -1,13 +1,14 @@
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
+import 'package:book_net/dto/user/user_dto.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:flutter/material.dart';
 
 class BookShelfScreen extends StatelessWidget {
   static const id = "BookShelfScreen";
 
-  const BookShelfScreen({super.key});
-
+  const BookShelfScreen({super.key, required this.user});
+  final UserDto user;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -16,8 +17,8 @@ class BookShelfScreen extends StatelessWidget {
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size(double.infinity, AppStyles.appBarHeight),
-          child: const Bars(
-            title: 'Book Shelf',
+          child: Bars(
+            title: "${user.alias}'s book shelf",
           ),
         ),
         body: Column(children: [

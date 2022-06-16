@@ -1,4 +1,5 @@
 import 'package:book_net/routes/app_routes.dart';
+import 'package:book_net/view_models/user/curr_user.dart';
 import 'package:book_net/views/home_screen/achievement_screen/achievement_screen.dart';
 import 'package:book_net/views/home_screen/book_screen/book_screen.dart';
 import 'package:book_net/views/home_screen/feed_screen/feed_screen.dart';
@@ -46,7 +47,9 @@ class HomeScreen extends StatelessWidget {
       const GuildScreen(),
       const BookScreen(),
       const AchievementScreen(),
-      const ProfileScreen(),
+      ProfileScreen(
+        user: CurrUserData().user!,
+      ),
     ];
   }
 

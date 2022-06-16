@@ -184,10 +184,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                             !number3Validate ||
                             !number4Validate),
                         gradient: const LinearGradient(
-                          colors: <Color>[
-                            AppColors.green1Color,
-                            AppColors.green2Color,
-                          ],
+                          colors: AppColors.gradientPrimary,
                         ),
                         onPressed: () => _onPressedContinue(
                             context,
@@ -206,10 +203,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                               .copyWith(color: AppColors.oceanGreenColor),
                         ),
                         gradient: const LinearGradient(
-                          colors: <Color>[
-                            AppColors.teaGreenColor,
-                            AppColors.lightGrayColor,
-                          ],
+                          colors: AppColors.gradientSecondary,
                         ),
                         onPressed: () => _onPressedResend(context),
                       ),
