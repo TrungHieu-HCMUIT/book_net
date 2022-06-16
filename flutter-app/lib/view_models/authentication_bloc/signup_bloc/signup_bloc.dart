@@ -20,7 +20,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     emit(const SignUpState.inProgress());
 
     await AuthenticationProvider()
-        .signUp(event.email, event.username, event.password);
+        .signUp(event.email, event.username, event.name, event.password);
     emit(const SignUpState.signUpSuccess());
   }
 

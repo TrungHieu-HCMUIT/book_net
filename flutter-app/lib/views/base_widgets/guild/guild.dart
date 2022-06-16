@@ -14,7 +14,6 @@ class Guild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     onTap() {
-      print('object' + guild.name);
       Navigator.pushNamed(context, DetailGuildScreen.id, arguments: guild);
     }
 

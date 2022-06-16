@@ -21,8 +21,6 @@ class LogInBloc extends Bloc<LoginEvent, LogInState> {
   ) async {
     emit(const LogInState.inProgress());
 
-    await Future.delayed(const Duration(seconds: 1));
-
     UserDto? response =
         await AuthenticationProvider().logIn(event.username, event.password);
 
