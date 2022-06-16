@@ -29,7 +29,7 @@ class GuildScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Downloaded', style: TextConfigs.bold18),
+            Text('My guilds', style: TextConfigs.bold18),
             SizedBox(
               height: 16.h,
             ),
@@ -47,7 +47,7 @@ class GuildScreen extends StatelessWidget {
             SizedBox(
               height: 32.h,
             ),
-            Text('Explore some guild', style: TextConfigs.bold18),
+            Text('Explore some guilds', style: TextConfigs.bold18),
             SizedBox(
               height: 16.h,
             ),

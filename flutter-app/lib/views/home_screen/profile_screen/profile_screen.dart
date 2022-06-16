@@ -124,51 +124,26 @@ class ProfileScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(24.w, 16.h, 24.w, 0.h),
+            padding: EdgeInsets.symmetric(
+                horizontal: AppStyles.defaultMarginHorizontal),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      DefaultCircleAvatar(
-                          width: 64.w, height: 64.h, imageUrl: _user.imageUrl),
+                      Padding(
+                        padding: EdgeInsets.all(4.h),
+                        child: DefaultCircleAvatar(
+                            width: 60.w,
+                            height: 60.h,
+                            imageUrl: _user.imageUrl),
+                      ),
                       SizedBox(
                         width: 20.w,
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width -
-                            64.w -
-                            48.w -
-                            20.w,
-                        child: Row(
-                          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: const <Widget>[
-                            Flexible(
-                              child: NumberWithText(
-                                number: 33,
-                                text: 'like',
-                              ),
-                              flex: 1,
-                            ),
-                            Flexible(
-                              child: NumberWithText(
-                                number: 33,
-                                text: 'following',
-                              ),
-                              flex: 1,
-                            ),
-                            Flexible(
-                              child: NumberWithText(
-                                number: 33,
-                                text: 'follower',
-                              ),
-                              flex: 1,
-                            ),
-                          ],
-                        ),
-                      ),
+                      _buildNumberInfo(context)
                     ]),
                 SizedBox(
                   height: 8.h,
@@ -260,6 +235,42 @@ class ProfileScreen extends StatelessWidget {
               ),
             ]),
       ),
+    );
+  }
+
+  Row _buildNumberInfo(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(
+          width: MediaQuery.of(context).size.width - 64.w - 48.w - 20.w,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: const <Widget>[
+              Flexible(
+                child: NumberWithText(
+                  number: 33,
+                  text: 'like',
+                ),
+                flex: 1,
+              ),
+              Flexible(
+                child: NumberWithText(
+                  number: 33,
+                  text: 'following',
+                ),
+                flex: 1,
+              ),
+              Flexible(
+                child: NumberWithText(
+                  number: 33,
+                  text: 'follower',
+                ),
+                flex: 1,
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
