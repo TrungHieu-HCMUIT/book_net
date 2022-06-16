@@ -9,12 +9,15 @@ class Bars extends StatelessWidget {
     Key? key,
     this.title,
     this.dotStepper,
+    this.widget,
     List<Widget>? list,
     this.leading,
   })  : _list = list,
         super(key: key);
 
   final String? title;
+  final Widget? widget;
+
   final List<Widget>? _list;
   final Widget? leading;
   final DotStepper? dotStepper;
@@ -33,7 +36,9 @@ class Bars extends StatelessWidget {
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
-      title: dotStepper ?? Text(title ?? "", style: TextConfigs.bold18),
+      // title: dotStepper ?? title,
+      title: widget ??
+          (dotStepper ?? Text(title ?? "", style: TextConfigs.bold18)),
       centerTitle: true,
       actions: _list,
     );

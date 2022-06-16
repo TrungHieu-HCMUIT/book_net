@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
@@ -70,7 +68,7 @@ class ProfileScreen extends StatelessWidget {
           ),
         ),
         builder: (context) => SizedBox(
-          height: 600.h,
+          height: 300.h,
           child: CustomModalBottomSheet(
             widgets: [
               Padding(
@@ -86,15 +84,18 @@ class ProfileScreen extends StatelessWidget {
               IconWithTextButton(
                   onTap: () => onPressEditButton(context),
                   text: 'Profile',
-                  icon: 'assets/icons/edit.png'),
+                  // icon: 'assets/icons/edit.png',
+                  iconFlutter: Icons.edit_note_rounded),
               IconWithTextButton(
-                  onTap: () => onPressPasswordButton(context),
-                  text: 'Password',
-                  icon: 'assets/icons/edit.png'),
-              IconWithTextButton(
-                  onTap: () => log('Setting'),
-                  text: 'Setting',
-                  icon: 'assets/icons/edit.png'),
+                onTap: () => onPressPasswordButton(context),
+                text: 'Password',
+                // icon: 'assets/icons/edit.png',
+                iconFlutter: Icons.lock_outline_rounded,
+              ),
+              // IconWithTextButton(
+              //     onTap: () => log('Setting'),
+              //     text: 'Setting',
+              //     icon: 'assets/icons/edit.png'),
               const Divider(),
             ],
           ),

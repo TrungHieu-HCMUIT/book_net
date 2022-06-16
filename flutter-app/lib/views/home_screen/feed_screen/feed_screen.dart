@@ -2,6 +2,7 @@ import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/views/home_screen/create_news_screen/create_news_screen.dart';
 import 'package:book_net/views/home_screen/feed_screen/news.dart';
+import 'package:book_net/views/home_screen/search_screen/search_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../configs/color_configs.dart';
@@ -12,10 +13,21 @@ import '../../base_widgets/button/raised_gradient_button.dart';
 
 class FeedScreen extends StatelessWidget {
   static const id = "FeedScreen";
-  FeedScreen({Key? key}) : super(key: key);
+  const FeedScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _barIcons = [
+      CustomIconButton(
+          icon: Image.asset('assets/icons/ic_search.png'),
+          color: AppColors.whiteColor,
+          onPressed: () => {
+                Navigator.pushNamed(context, SearchScreen.id),
+              }),
+      SizedBox(
+        width: AppStyles.defaultMarginHorizontal,
+      )
+    ];
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, AppStyles.appBarHeight),
@@ -33,24 +45,6 @@ class FeedScreen extends StatelessWidget {
       ),
     );
   }
-
-  final List<Widget> _barIcons = [
-    CustomIconButton(
-        icon: Image.asset('assets/icons/ic_search.png'),
-        color: AppColors.whiteColor,
-        onPressed: () => {}),
-    // Padding(
-    //   padding: EdgeInsets.symmetric(vertical: 4.h),
-    //   child: DefaultCircleAvatar(
-    //     imageUrl: CurrUserData().user!.imageUrl,
-    //     height: 40.h,
-    //     width: 40.w,
-    //   ),
-    // ),
-    SizedBox(
-      width: AppStyles.defaultMarginHorizontal,
-    )
-  ];
 
   Widget _buildHeader(BuildContext context) {
     return Container(

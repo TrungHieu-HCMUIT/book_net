@@ -4,8 +4,8 @@ import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/configs/validate_configs.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
+import 'package:book_net/views/base_widgets/dialog/confirm_dialog.dart';
 import 'package:book_net/views/base_widgets/text_field/password_text_field.dart';
-import 'package:book_net/views/login_screen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -34,11 +34,19 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
-    onPressedLogin() {
-      Navigator.pushNamed(context, LoginScreen.id);
+    onDone() {
+      print('object');
+      // Navigator.popAndPushNamed(context, FeedScreen.id,
+      //     arguments: CurrUserData().user);
+    }
 
+    onPressedChangePassword() {
       // log('button click');
-      // log('${_key.currentState!.validate()}');
+      _key.currentState!.validate()
+          ? showMyDialog(context, 'Successful!', '',
+              "You've already changed your password", 'Done', onDone)
+          : null;
+
       // print(passwordValidator
       //     .validators[passwordValidator.validators.length - 1].errorText);
     }
@@ -98,12 +106,12 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 child: Text(
                   'Change password',
                   style: TextConfigs.medium16
-                      .copyWith(color: AppColors.oceanGreenColor),
+                      .copyWith(color: AppColors.whiteColor),
                 ),
                 gradient: const LinearGradient(
-                  colors: AppColors.gradientSecondary,
+                  colors: AppColors.gradientPrimary,
                 ),
-                onPressed: onPressedLogin,
+                onPressed: onPressedChangePassword,
               ),
             ],
           ),
