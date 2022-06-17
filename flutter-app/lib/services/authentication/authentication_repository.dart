@@ -40,7 +40,7 @@ class AuthenticationRepository {
 
   Future<void> verifyEmail(String email, String token) async {
     Dio _dio = Dio();
-    await _dio.post(AppEndpoints.signUpEndPoint,
+    await _dio.post(AppEndpoints.verifyEmailEndPoint,
         data: {"email": email, "token": token});
     return;
   }

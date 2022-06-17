@@ -28,12 +28,6 @@ class _SetupScreenState extends State<SetupScreen> {
     '❤ Romantic',
     '❤ Fantasy',
     '❤ Anime',
-    '🤡 Cosmedy',
-    '👻 Hosrror',
-    '💅🏻 Dramas',
-    '❤ Romasntic',
-    '❤ Fanstasy',
-    '❤ Ansime',
   ];
   List<String> goalList = [
     'Explore more books',

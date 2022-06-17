@@ -56,7 +56,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
             break;
           case Status.success:
             Utils.dismissDialog(context);
-            Navigator.pushNamed(context, VerifyScreen.id);
+            Navigator.pushNamed(context, VerifyScreen.id,
+                arguments: emailController.text);
             break;
           default:
             break;

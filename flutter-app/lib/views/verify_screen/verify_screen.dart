@@ -1,15 +1,24 @@
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
+import 'package:book_net/view_models/status.dart';
+import 'package:book_net/view_models/verify_email_bloc.dart/verify_email_event.dart';
+import 'package:book_net/view_models/verify_email_bloc.dart/verify_email_state.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
 import 'package:book_net/views/base_widgets/text_field/circle_text_field.dart';
+import 'package:book_net/views/setup_screen/setup_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../utils/utils.dart';
+import '../../view_models/verify_email_bloc.dart/verify_email_bloc.dart';
+
 class VerifyScreen extends StatefulWidget {
-  const VerifyScreen({Key? key}) : super(key: key);
+  const VerifyScreen({Key? key, required this.email}) : super(key: key);
   static const String id = 'VerifyScreen';
+  final String email;
 
   @override
   State<VerifyScreen> createState() => _VerifyScreenState();
@@ -57,160 +66,175 @@ class _VerifyScreenState extends State<VerifyScreen> {
       _key.currentState!.validate();
     }
 
-    return GestureDetector(
-      onTap: () => setUnfocus(context),
-      child: Scaffold(
-        backgroundColor: AppColors.whiteColor,
-        appBar: PreferredSize(
-          preferredSize: Size(double.infinity, AppStyles.appBarHeight),
-          child: const Bars(),
-        ),
-        body: SingleChildScrollView(
-          child: Container(
-            height: MediaQuery.of(context).size.height -
-                AppStyles.appBarHeight -
-                48.h,
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text('Enter authentication code.',
-                      style: TextConfigs.bold24),
-                ),
-                SizedBox(
-                  height: 12.h,
-                ),
-                Text('Enter the 4-digit that we have sent to your email',
-                    style: TextConfigs.medium16),
-                SizedBox(
-                  height: 24.h,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    CircleTextField(
-                      controller: text1Controller,
-                      focusNode: text1,
-                      onChanged: (value) {
-                        if (value.isNotEmpty) {
-                          FocusScope.of(context).requestFocus(text2);
-                        }
-                        setState(() {
-                          if (value == '') {
-                            number1Validate = false;
-                            return;
+    return BlocListener<VerifyEmailBloc, VerifyEmailState>(
+      listener: (context, state) {
+        switch (state.status) {
+          case Status.inProgress:
+            Utils.showLoading(context);
+            break;
+          case Status.success:
+            Utils.dismissDialog(context);
+            Navigator.of(context).pushNamed(SetupScreen.id);
+            break;
+          default:
+            break;
+        }
+      },
+      child: GestureDetector(
+        onTap: () => setUnfocus(context),
+        child: Scaffold(
+          backgroundColor: AppColors.whiteColor,
+          appBar: PreferredSize(
+            preferredSize: Size(double.infinity, AppStyles.appBarHeight),
+            child: const Bars(),
+          ),
+          body: SingleChildScrollView(
+            child: Container(
+              height: MediaQuery.of(context).size.height -
+                  AppStyles.appBarHeight -
+                  48.h,
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text('Enter authentication code.',
+                        style: TextConfigs.bold24),
+                  ),
+                  SizedBox(
+                    height: 12.h,
+                  ),
+                  Text('Enter the 4-digit that we have sent to your email',
+                      style: TextConfigs.medium16),
+                  SizedBox(
+                    height: 24.h,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CircleTextField(
+                        controller: text1Controller,
+                        focusNode: text1,
+                        onChanged: (value) {
+                          if (value.isNotEmpty) {
+                            FocusScope.of(context).requestFocus(text2);
                           }
-                          number1Validate = true;
-                        });
-                      },
-                    ),
-                    SizedBox(
-                      width: 24.w,
-                    ),
-                    CircleTextField(
-                      controller: text2Controller,
-                      focusNode: text2,
-                      onChanged: (value) {
-                        if (value.isNotEmpty) {
-                          FocusScope.of(context).requestFocus(text3);
-                        }
-                        setState(() {
-                          if (value == '') {
-                            number2Validate = false;
-                            return;
-                          }
-                          number2Validate = true;
-                        });
-                      },
-                    ),
-                    SizedBox(
-                      width: 24.w,
-                    ),
-                    CircleTextField(
-                      focusNode: text3,
-                      controller: text3Controller,
-                      onChanged: (value) {
-                        if (value.isNotEmpty) {
-                          FocusScope.of(context).requestFocus(text4);
-                        }
-                        setState(() {
-                          if (value == '') {
-                            number3Validate = false;
-                            return;
-                          }
-                          number3Validate = true;
-                        });
-                      },
-                    ),
-                    SizedBox(
-                      width: 24.w,
-                    ),
-                    CircleTextField(
-                      controller: text4Controller,
-                      focusNode: text4,
-                      onChanged: (value) {
-                        if (value.isNotEmpty) {
-                          FocusScope.of(context).requestFocus(FocusNode());
                           setState(() {
                             if (value == '') {
-                              number4Validate = false;
+                              number1Validate = false;
                               return;
                             }
-                            number4Validate = true;
+                            number1Validate = true;
                           });
-                        }
-                      },
-                    ),
-                  ],
-                ),
-                Flexible(
-                  flex: 1,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      RaisedGradientButton(
-                        child: Text(
-                          'Continue',
-                          style: TextConfigs.medium16
-                              .copyWith(color: AppColors.whiteColor),
-                        ),
-                        disable: (!number1Validate ||
-                            !number2Validate ||
-                            !number3Validate ||
-                            !number4Validate),
-                        gradient: const LinearGradient(
-                          colors: AppColors.gradientPrimary,
-                        ),
-                        onPressed: () => _onPressedContinue(
-                            context,
-                            text1Controller.text,
-                            text2Controller.text,
-                            text3Controller.text,
-                            text4Controller.text),
+                        },
                       ),
                       SizedBox(
-                        height: 16.h,
+                        width: 24.w,
                       ),
-                      RaisedGradientButton(
-                        child: Text(
-                          'Resend code',
-                          style: TextConfigs.medium16
-                              .copyWith(color: AppColors.oceanGreenColor),
-                        ),
-                        gradient: const LinearGradient(
-                          colors: AppColors.gradientSecondary,
-                        ),
-                        onPressed: () => _onPressedResend(context),
+                      CircleTextField(
+                        controller: text2Controller,
+                        focusNode: text2,
+                        onChanged: (value) {
+                          if (value.isNotEmpty) {
+                            FocusScope.of(context).requestFocus(text3);
+                          }
+                          setState(() {
+                            if (value == '') {
+                              number2Validate = false;
+                              return;
+                            }
+                            number2Validate = true;
+                          });
+                        },
+                      ),
+                      SizedBox(
+                        width: 24.w,
+                      ),
+                      CircleTextField(
+                        focusNode: text3,
+                        controller: text3Controller,
+                        onChanged: (value) {
+                          if (value.isNotEmpty) {
+                            FocusScope.of(context).requestFocus(text4);
+                          }
+                          setState(() {
+                            if (value == '') {
+                              number3Validate = false;
+                              return;
+                            }
+                            number3Validate = true;
+                          });
+                        },
+                      ),
+                      SizedBox(
+                        width: 24.w,
+                      ),
+                      CircleTextField(
+                        controller: text4Controller,
+                        focusNode: text4,
+                        onChanged: (value) {
+                          if (value.isNotEmpty) {
+                            FocusScope.of(context).requestFocus(FocusNode());
+                            setState(() {
+                              if (value == '') {
+                                number4Validate = false;
+                                return;
+                              }
+                              number4Validate = true;
+                            });
+                          }
+                        },
                       ),
                     ],
                   ),
-                ),
-              ],
+                  Flexible(
+                    flex: 1,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        RaisedGradientButton(
+                          child: Text(
+                            'Continue',
+                            style: TextConfigs.medium16
+                                .copyWith(color: AppColors.whiteColor),
+                          ),
+                          disable: (!number1Validate ||
+                              !number2Validate ||
+                              !number3Validate ||
+                              !number4Validate),
+                          gradient: const LinearGradient(
+                            colors: AppColors.gradientPrimary,
+                          ),
+                          onPressed: () => _onPressedContinue(
+                              context,
+                              text1Controller.text,
+                              text2Controller.text,
+                              text3Controller.text,
+                              text4Controller.text),
+                        ),
+                        SizedBox(
+                          height: 16.h,
+                        ),
+                        RaisedGradientButton(
+                          child: Text(
+                            'Resend code',
+                            style: TextConfigs.medium16
+                                .copyWith(color: AppColors.oceanGreenColor),
+                          ),
+                          gradient: const LinearGradient(
+                            colors: AppColors.gradientSecondary,
+                          ),
+                          onPressed: () => _onPressedResend(context),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -228,7 +252,8 @@ class _VerifyScreenState extends State<VerifyScreen> {
 
   _onPressedContinue(BuildContext context, String text1, String text2,
       String text3, String text4) {
-    print('button continue: ' + text1 + text2 + text3 + text4);
+    context.read<VerifyEmailBloc>().add(OnVerifyEmailEvent(
+        email: widget.email, token: text1 + text2 + text3 + text4));
   }
 
   _onPressedResend(BuildContext context) {

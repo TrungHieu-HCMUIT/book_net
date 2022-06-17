@@ -7,6 +7,7 @@ import 'package:book_net/view_models/authentication_bloc/login_bloc/login_bloc.d
 import 'package:book_net/view_models/authentication_bloc/signup_bloc/signup_bloc.dart';
 
 import 'package:book_net/view_models/create_news_bloc/create_news_bloc.dart';
+import 'package:book_net/view_models/verify_email_bloc.dart/verify_email_bloc.dart';
 import 'package:book_net/views/carousel_screen/carousel_screen.dart';
 import 'package:book_net/views/change_password_screen/change_password_screen.dart';
 import 'package:book_net/views/forgot_password_screen/forgot_password_screen.dart';
@@ -130,11 +131,12 @@ class AppRoutes {
                   user: value,
                 ));
       case VerifyScreen.id:
+        final email = settings.arguments as String;
         return CupertinoPageRoute(
             settings: settings,
             builder: (_) => BlocProvider(
-                create: ((context) => SignUpBloc()),
-                child: const VerifyScreen()));
+                create: (context) => VerifyEmailBloc(),
+                child: VerifyScreen(email: email)));
       case SetupScreen.id:
         return CupertinoPageRoute(
             settings: settings, builder: (_) => const SetupScreen());
