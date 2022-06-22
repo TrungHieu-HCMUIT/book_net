@@ -1,6 +1,7 @@
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
+import 'package:book_net/views/base_widgets/image/image.dart';
 import 'package:book_net/views/login_screen/choose_login_type.dart';
 import 'package:book_net/views/signup_screen/signup_screen.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,13 @@ class CarouselScreen extends StatefulWidget {
 
 class _CarouselScreenState extends State<CarouselScreen> {
   final controller = PageController(viewportFraction: 1, keepPage: true);
+
+  List<String> image = [
+    "https://i.pinimg.com/564x/d5/b2/31/d5b2314b8ef86b8a7949c3b209e0aaba.jpg",
+    "https://i.pinimg.com/564x/94/3b/3e/943b3e7ff25ee56fa87a1bf8e62aaafe.jpg",
+    "https://i.pinimg.com/564x/74/3c/13/743c13f3dd1bd7531c41526c14e4582b.jpg",
+    "https://i.pinimg.com/564x/ee/8e/90/ee8e90420e2c5120ba63e81f419da1cb.jpg"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +48,9 @@ class _CarouselScreenState extends State<CarouselScreen> {
                 height: 300.h,
                 width: 300.w,
                 child: Center(
-                    child: Text(
-                  "Page $index",
-                  style: const TextStyle(color: AppColors.whiteColor),
-                )),
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(12.h)),
+                        child: CustomImage(imageUrl: image[index]))),
               ),
             ));
     return Scaffold(

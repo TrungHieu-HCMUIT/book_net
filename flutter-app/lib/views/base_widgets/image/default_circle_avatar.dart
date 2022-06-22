@@ -6,10 +6,7 @@ import '../../../configs/color_configs.dart';
 
 class DefaultCircleAvatar extends StatelessWidget {
   const DefaultCircleAvatar(
-      {super.key,
-      required this.width,
-      required this.height,
-      required this.imageUrl});
+      {super.key, this.width = 64, this.height = 64, required this.imageUrl});
   final double width;
   final double height;
   final String? imageUrl;
@@ -26,8 +23,8 @@ class DefaultCircleAvatar extends StatelessWidget {
             ),
             errorWidget: (context, url, error) => _buildDefaultAvatar(),
             imageBuilder: (context, imageProvider) => SizedBox(
-              height: height,
-              width: width,
+              height: height.h,
+              width: width.w,
               child: CircleAvatar(
                 backgroundImage: NetworkImage(imageUrl!),
               ),
@@ -37,7 +34,7 @@ class DefaultCircleAvatar extends StatelessWidget {
 
   Widget _buildDefaultAvatar() {
     return ClipRRect(
-        borderRadius: BorderRadius.circular(width),
+        borderRadius: BorderRadius.circular(width.w),
         child: Image.asset(
           'assets/images/default_avatar.png',
         ));

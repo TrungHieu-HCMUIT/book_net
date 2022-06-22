@@ -133,7 +133,7 @@ class ProfileScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(24.w, 16.h, 24.w, 0.h),
+            padding: EdgeInsets.fromLTRB(24.w, 16.h, 8.w, 0.h),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -143,9 +143,6 @@ class ProfileScreen extends StatelessWidget {
                     children: [
                       DefaultCircleAvatar(
                           width: 64.w, height: 64.h, imageUrl: _user.imageUrl),
-                      SizedBox(
-                        width: 20.w,
-                      ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width -
                             64.w -
