@@ -14,29 +14,35 @@ class DefaultCircleAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return (imageUrl == null)
         ? _buildDefaultAvatar()
-        : CachedNetworkImage(
-            imageUrl: imageUrl!,
-            placeholder: (context, url) => const Center(
-              child: CircularProgressIndicator(
-                color: AppColors.greenLightestColor,
+        : SizedBox(
+            height: height,
+            child: CachedNetworkImage(
+              imageUrl: imageUrl!,
+              placeholder: (context, url) => const Center(
+                child: CircularProgressIndicator(
+                  color: AppColors.greenLightestColor,
+                ),
               ),
-            ),
-            errorWidget: (context, url, error) => _buildDefaultAvatar(),
-            imageBuilder: (context, imageProvider) => SizedBox(
-              height: height.h,
-              width: width.w,
-              child: CircleAvatar(
-                backgroundImage: NetworkImage(imageUrl!),
+              errorWidget: (context, url, error) => _buildDefaultAvatar(),
+              imageBuilder: (context, imageProvider) => SizedBox(
+                height: height.h,
+                width: width.w,
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(imageUrl!),
+                ),
               ),
             ),
           );
   }
 
   Widget _buildDefaultAvatar() {
-    return ClipRRect(
-        borderRadius: BorderRadius.circular(width.w),
-        child: Image.asset(
-          'assets/images/default_avatar.png',
-        ));
+    return SizedBox(
+      height: height,
+      child: ClipRRect(
+          borderRadius: BorderRadius.circular(width.w),
+          child: Image.asset(
+            'assets/images/default_avatar.png',
+          )),
+    );
   }
 }

@@ -72,8 +72,11 @@ class NewsDetailScreen extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          DefaultCircleAvatar(
-              width: 40.w, height: 40.h, imageUrl: newsModel.userImageUrl),
+          SizedBox(
+            height: 40.h,
+            child: DefaultCircleAvatar(
+                width: 40.w, height: 40.h, imageUrl: newsModel.userImageUrl),
+          ),
           SizedBox(
             width: AppStyles.smallMarginHorizontal,
           ),

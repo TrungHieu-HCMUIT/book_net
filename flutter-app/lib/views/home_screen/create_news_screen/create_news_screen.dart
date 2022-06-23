@@ -5,6 +5,8 @@ import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/view_models/create_news_bloc/create_news_bloc.dart';
 import 'package:book_net/view_models/create_news_bloc/create_news_event.dart';
 import 'package:book_net/view_models/create_news_bloc/create_news_state.dart';
+import 'package:book_net/view_models/feed_bloc/feed_bloc.dart';
+import 'package:book_net/view_models/feed_bloc/feed_event.dart';
 import 'package:book_net/view_models/user/curr_user.dart';
 import 'package:book_net/views/base_widgets/image/default_circle_avatar.dart';
 import 'package:book_net/views/base_widgets/rating_stars/base_rating_stars.dart';
@@ -21,9 +23,11 @@ import 'news_image_widget.dart';
 
 class CreateNewsScreen extends StatelessWidget {
   static const id = 'CreateNewsScreen';
-  CreateNewsScreen({Key? key, this.guild, this.book}) : super(key: key);
+  CreateNewsScreen({Key? key, this.guild, this.book, required this.feedBloc})
+      : super(key: key);
   final GuildDto? guild;
   final BookDto? book;
+  final FeedBloc feedBloc;
   final _captionController = TextEditingController();
 
   @override
@@ -36,6 +40,7 @@ class CreateNewsScreen extends StatelessWidget {
             break;
           case Status.success:
             Utils.dismissDialog(context);
+            feedBloc.add(const AddPostNewsEvent());
             Navigator.pop(context);
             break;
           default:

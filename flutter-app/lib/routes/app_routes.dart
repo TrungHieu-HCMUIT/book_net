@@ -101,6 +101,7 @@ class AppRoutes {
         );
       case CreateNewsScreen.id:
         List<dynamic>? args = settings.arguments as List?;
+
         return CupertinoPageRoute(
             settings: settings,
             builder: (_) => BlocProvider(
@@ -108,6 +109,7 @@ class AppRoutes {
                 child: CreateNewsScreen(
                   guild: args?[0],
                   book: args?[1],
+                  feedBloc: args?[2],
                 )));
       case EditProfileScreen.id:
         return CupertinoPageRoute(

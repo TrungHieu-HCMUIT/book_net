@@ -25,6 +25,7 @@ class BookNetApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Use for UI testing
+    createDate = DateTime.now().millisecondsSinceEpoch;
     CurrUserData().setUser(userTestModel);
 
     return ScreenUtilInit(
@@ -53,7 +54,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
       splash: Image.asset('assets/images/LOGO.png'),
-      nextScreen: const LaunchScreen(),
+      nextScreen: const HomeScreen(),
       splashTransition: SplashTransition.fadeTransition,
     );
   }

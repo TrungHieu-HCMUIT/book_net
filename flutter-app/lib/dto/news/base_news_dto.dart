@@ -63,15 +63,11 @@ final List<BaseNewsDto> newsListTest = [];
 
 final List<BaseNewsDto> newsGuildTest = [
   guildNewsTestModel,
-  guildNewsTestModel,
-  guildNewsTestModel,
-  guildNewsTestModel,
-  guildNewsTestModel
 ];
 
 final UserDto userTestModel = UserDto(
   id: 'id',
-  imageUrl: '',
+  imageUrl: null,
   name: 'Trung Hieu',
   alias: 'trunnghieu',
   gender: 2,
@@ -86,9 +82,27 @@ final UserDto userTestModel = UserDto(
   email: 'work.trunghieu.0107@gmail.com',
 );
 
+final UserDto user2TestModel = UserDto(
+  id: 'id',
+  imageUrl:
+      'https://scontent.fhan4-3.fna.fbcdn.net/v/t39.30808-1/280775285_2818069184997713_1474989986263643790_n.jpg?stp=dst-jpg_p480x480&_nc_cat=100&ccb=1-7&_nc_sid=7206a8&_nc_ohc=t6smf3NJEeUAX91xtfg&_nc_ht=scontent.fhan4-3.fna&oh=00_AT_DYXQBMusi5jpF-8rcXnJwUm49Z86nzflhqkrXe3anyg&oe=62B8B2FA',
+  name: 'Yến Nhi',
+  alias: 'yennhi',
+  gender: 2,
+  dob: '01/01/1999',
+  bookShelf: ['bookShelf'],
+  following: [],
+  followers: [],
+  guildList: ['guildList'],
+  currentPoint: 100,
+  highestPoint: 1000,
+  createDate: 1654925791410,
+  email: 'work.trunghieu.0107@gmail.com',
+);
+
 final List<CommentDto> commentListTestModel = [];
 
-late final createDate;
+late var createDate;
 
 final commentTestModel = CommentDto(
     id: 'id',
@@ -107,10 +121,10 @@ final PostNewsDto postNewsTestModel = PostNewsDto(
     id: 'id',
     user: userTestModel,
     type: NewsType.post.value,
-    caption: 'Caption post',
+    caption: 'Post caption',
     likeUserIdList: [],
     imageUrl:
-        'https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.6435-9/123682547_1587251551483025_7141545519838769160_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=e3f864&_nc_ohc=LH3Twa4Bp-UAX84OLUg&_nc_ht=scontent.fsgn2-5.fna&oh=00_AT_eFvjsRaLCX-tXHwYkg1rDDMCjKSrCP0hTMSg9z7Oe_w&oe=62BA406D',
+        'https://firebasestorage.googleapis.com/v0/b/booknet-2edba.appspot.com/o/newsImages%2Ftrunnghieu%2F2022-06-23%2014%3A25?alt=media&token=c7f60ec2-529a-48d3-b487-7b50fb93d543',
     commentList: commentListTestModel,
     createDate: createDate);
 
@@ -130,14 +144,14 @@ const GuildDto guildTestModel = GuildDto(
     id: 'id',
     imageUrl:
         'https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.6435-9/87220350_3114466355253620_8717576024990154752_n.jpg?stp=dst-jpg_s2048x2048&_nc_cat=102&ccb=1-7&_nc_sid=e3f864&_nc_ohc=jxQsnB6ejhgAX-Ce8gl&_nc_ht=scontent.fsgn2-5.fna&oh=00_AT-eTbC5-7_rUX24aTaaFo1xZAp5wnn4FcVgdTCP_9pyWA&oe=62BFF3EA',
-    name: 'Đảo mèo',
+    name: 'WeBook',
     description: 'Đảo mèo descrition',
     memberList: ['memberList']);
 
 // GuildNewsDto
 final GuildNewsDto guildNewsTestModel = GuildNewsDto(
     id: 'id',
-    user: userTestModel,
+    user: user2TestModel,
     type: NewsType.guild.value,
     caption: 'Caption guild',
     likeUserIdList: [],
@@ -145,7 +159,7 @@ final GuildNewsDto guildNewsTestModel = GuildNewsDto(
     createDate: createDate,
     guild: guildTestModel,
     imageUrl:
-        'https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.6435-9/123682547_1587251551483025_7141545519838769160_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=e3f864&_nc_ohc=LH3Twa4Bp-UAX84OLUg&_nc_ht=scontent.fsgn2-5.fna&oh=00_AT_eFvjsRaLCX-tXHwYkg1rDDMCjKSrCP0hTMSg9z7Oe_w&oe=62BA406D');
+        'https://images.pexels.com/photos/4581325/pexels-photo-4581325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
 
 final List<BookDto> listBook = [
   const BookDto(

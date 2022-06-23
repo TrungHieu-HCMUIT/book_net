@@ -33,7 +33,7 @@ class CustomImage extends StatelessWidget {
             ),
             image: DecorationImage(
               image: imageProvider,
-              fit: BoxFit.fill,
+              fit: BoxFit.fitWidth,
             )),
       ),
     );

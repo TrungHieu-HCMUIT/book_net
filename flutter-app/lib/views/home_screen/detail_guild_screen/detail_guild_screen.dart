@@ -16,7 +16,7 @@ class DetailGuildScreen extends StatelessWidget {
   final GuildDto guild;
   DetailGuildScreen({super.key, required this.guild});
 
-  bool isAdded = false;
+  bool isAdded = true;
 
   @override
   Widget build(BuildContext context) {

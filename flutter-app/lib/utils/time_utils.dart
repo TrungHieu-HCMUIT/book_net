@@ -27,7 +27,7 @@ class TimeUtils {
     } else if (durationInHour > 0) {
       text = "$durationInHour$hour";
     } else if (durationInMinute > 0) {
-      text = "$durationInMinute$hour";
+      text = "$durationInMinute$minute";
     } else {
       text = 'now';
     }

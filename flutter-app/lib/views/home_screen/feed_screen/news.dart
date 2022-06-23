@@ -7,6 +7,7 @@ import 'package:book_net/dto/news/post_news_dto.dart';
 import 'package:book_net/dto/news/review_news_dto.dart';
 import 'package:book_net/utils/time_utils.dart';
 import 'package:book_net/views/base_widgets/image/default_circle_avatar.dart';
+import 'package:book_net/views/base_widgets/image/image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -253,6 +254,7 @@ class NewsCard extends StatelessWidget {
 
   Widget _buildDefaultBody(BaseNewsDto baseNewsDto) {
     var newsDto;
+
     if (NewsType.fromInt(baseNewsDto.type) == NewsType.post) {
       newsDto = baseNewsDto as PostNewsDto;
     } else {
@@ -273,7 +275,7 @@ class NewsCard extends StatelessWidget {
       SizedBox(
         width: double.infinity,
         height: AppStyles.newsBodyHeight,
-        child: Image.network(newsDto.imageUrl, fit: BoxFit.fitWidth),
+        child: CustomImage(imageUrl: newsDto.imageUrl),
       ),
     ]);
   }

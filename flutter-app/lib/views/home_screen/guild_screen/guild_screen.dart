@@ -10,7 +10,6 @@ import 'package:book_net/views/base_widgets/guild/guild.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:http/http.dart';
 
 import '../../../view_models/guild_bloc/guild_bloc.dart';
 
