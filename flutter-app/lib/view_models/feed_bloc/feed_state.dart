@@ -2,8 +2,6 @@ import 'package:book_net/dto/news/news_response_dto.dart';
 import 'package:book_net/view_models/status.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../dto/guild/guild_dto.dart';
-
 class FeedState extends Equatable {
   FeedState._({this.status = Status.initial, this.result = const []});
 
@@ -14,6 +12,8 @@ class FeedState extends Equatable {
   FeedState.initial() : this._();
 
   FeedState.inProgress() : this._(status: Status.inProgress);
+
+  FeedState.addSuccess() : this._(status: Status.inProgress);
 
   FeedState.getFail() : this._(status: Status.fail);
 

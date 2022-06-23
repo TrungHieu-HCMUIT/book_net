@@ -13,3 +13,31 @@ class GetFeedEvent extends FeedEvent {
   @override
   List<Object> get props => [];
 }
+
+class AddPostNewsEvent extends FeedEvent {
+  const AddPostNewsEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class AddGuildNewsEvent extends FeedEvent {
+  const AddGuildNewsEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class AddReviewNewsEvent extends FeedEvent {
+  const AddReviewNewsEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class UpdateNewsEvent extends FeedEvent {
+  const UpdateNewsEvent();
+
+  @override
+  List<Object> get props => [];
+}

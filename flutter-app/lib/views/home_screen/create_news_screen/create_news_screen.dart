@@ -226,7 +226,7 @@ class CreateNewsScreen extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.h),
                   child: Image.network(
-                    guildNewsDto.guildImageUrl,
+                    guildNewsTestModel.guildImageUrl,
                     height: 36.h,
                     width: 36.h,
                     fit: BoxFit.cover,
@@ -236,7 +236,7 @@ class CreateNewsScreen extends StatelessWidget {
               DefaultCircleAvatar(
                   width: 24.w,
                   height: 24.h,
-                  imageUrl: guildNewsDto.userImageUrl)
+                  imageUrl: guildNewsTestModel.userImageUrl)
             ],
           ),
           Padding(
@@ -257,7 +257,7 @@ class CreateNewsScreen extends StatelessWidget {
                           horizontal: AppStyles.smallMarginHorizontal),
                       child: Image.asset('assets/icons/ic_dot.png'),
                     ),
-                    Text(guildNewsDto.guildName,
+                    Text(guildNewsTestModel.guildName,
                         style: TextConfigs.regular12Grey2)
                   ],
                 )

@@ -36,8 +36,6 @@ class BaseNewsDto {
   int get totalLike => likeUserIdList.length;
   String get userAlias => user.alias;
   String? get userImageUrl => user.imageUrl;
-
-  
 }
 
 enum NewsType {
@@ -61,26 +59,21 @@ enum NewsType {
 // Use for UI testing
 // PostNewsDto
 
-final List<BaseNewsDto> newsListTest = [
-  postNewsTestModel,
-  reviewNewsTestModel,
-  guildNewsDto
-];
+final List<BaseNewsDto> newsListTest = [];
 
 final List<BaseNewsDto> newsGuildTest = [
-  guildNewsDto,
-  guildNewsDto,
-  guildNewsDto,
-  guildNewsDto,
-  guildNewsDto
+  guildNewsTestModel,
+  guildNewsTestModel,
+  guildNewsTestModel,
+  guildNewsTestModel,
+  guildNewsTestModel
 ];
 
 final UserDto userTestModel = UserDto(
   id: 'id',
-  imageUrl:
-      'https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.6435-9/176869830_1722285027979676_4686567485411404858_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=_EfwKIv53SsAX-eJq2b&tn=xvG496jA7qoqR9u7&_nc_ht=scontent.fsgn2-6.fna&oh=00_AT-I7mn0_l5G48pBsWGOxGVdrLhNp05lPonO3B6FKBV9dw&oe=62C8DA8A',
-  name: 'Duy Quan',
-  alias: 'duyquann',
+  imageUrl: '',
+  name: 'Trung Hieu',
+  alias: 'trunnghieu',
   gender: 2,
   dob: '01/01/1999',
   bookShelf: ['bookShelf'],
@@ -90,50 +83,46 @@ final UserDto userTestModel = UserDto(
   currentPoint: 100,
   highestPoint: 1000,
   createDate: 1654925791410,
-  email: 'duyquan@gmail.com',
+  email: 'work.trunghieu.0107@gmail.com',
 );
 
-final List<CommentDto> commentListTestModel = [
-  commentTestModel,
-  commentTestModel
-];
+final List<CommentDto> commentListTestModel = [];
+
+late final createDate;
 
 final commentTestModel = CommentDto(
     id: 'id',
-    content: 'Commment comment',
+    content: 'Commment',
     commentUser: userTestModel,
-    replyList: [
-      replyCommentTestModel,
-      replyCommentTestModel,
-    ],
-    createDate: 1653286844319);
+    replyList: [],
+    createDate: createDate);
 
 final replyCommentTestModel = ReplyCommentDto(
     id: 'id',
-    content: 'Reply Comment',
+    content: 'Reply',
     commentUser: userTestModel,
-    createDate: 1653286844319);
+    createDate: createDate);
 
 final PostNewsDto postNewsTestModel = PostNewsDto(
     id: 'id',
     user: userTestModel,
     type: NewsType.post.value,
-    caption: 'Caption caption',
+    caption: 'Caption post',
     likeUserIdList: [],
     imageUrl:
         'https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.6435-9/123682547_1587251551483025_7141545519838769160_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=e3f864&_nc_ohc=LH3Twa4Bp-UAX84OLUg&_nc_ht=scontent.fsgn2-5.fna&oh=00_AT_eFvjsRaLCX-tXHwYkg1rDDMCjKSrCP0hTMSg9z7Oe_w&oe=62BA406D',
     commentList: commentListTestModel,
-    createDate: 1653286844319);
+    createDate: createDate);
 
 // ReviewNewsDto
 final ReviewNewsDto reviewNewsTestModel = ReviewNewsDto(
     id: 'id',
     user: userTestModel,
     type: NewsType.review.value,
-    caption: 'Caption caption',
+    caption: 'Caption review',
     likeUserIdList: [],
     commentList: commentListTestModel,
-    createDate: 1653286844319,
+    createDate: createDate,
     book: bookTestModel);
 
 // Guild
@@ -146,14 +135,14 @@ const GuildDto guildTestModel = GuildDto(
     memberList: ['memberList']);
 
 // GuildNewsDto
-final GuildNewsDto guildNewsDto = GuildNewsDto(
+final GuildNewsDto guildNewsTestModel = GuildNewsDto(
     id: 'id',
     user: userTestModel,
     type: NewsType.guild.value,
-    caption: 'Caption caption',
+    caption: 'Caption guild',
     likeUserIdList: [],
     commentList: commentListTestModel,
-    createDate: 1653286844319,
+    createDate: createDate,
     guild: guildTestModel,
     imageUrl:
         'https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.6435-9/123682547_1587251551483025_7141545519838769160_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=e3f864&_nc_ohc=LH3Twa4Bp-UAX84OLUg&_nc_ht=scontent.fsgn2-5.fna&oh=00_AT_eFvjsRaLCX-tXHwYkg1rDDMCjKSrCP0hTMSg9z7Oe_w&oe=62BA406D');
